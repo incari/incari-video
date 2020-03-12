@@ -12,7 +12,7 @@ import "../assets/styles/App.scss";
 import useInitialState from "../hooks/useInitialState";
 
 // Consts
-const API = "http://localhost:3000/initalState";
+const API = "http://localhost:3000/initialState";
 
 const App = () => {
   const initialState = useInitialState(API);

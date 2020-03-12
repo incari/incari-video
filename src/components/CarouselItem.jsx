@@ -1,6 +1,6 @@
 import React from "react";
 
-//import PropTypes from "prop-type";
+import PropTypes from "prop-type";
 
 import "../assets/styles/components/CarouselItem.scss";
 import playIcon from "../assets/static/play-icon.png";
@@ -29,11 +29,11 @@ const CarouselItem = ({ cover, title, year, contentRating, duration }) => (
   </div>
 );
 
-// CarouselItem.propTypes = {
-//   cover: propTypes.string,
-//   title: propTypes.string,
-//   year: propTypes.number,
-//   contentRating: propTypes.string,
-//   duration: propTypes.string
-// };
+CarouselItem.propTypes = {
+  cover: propTypes.string,
+  title: PropTypes.string,
+  year: PropTypes.number,
+  contentRating: PropTypes.string,
+  duration: PropTypes.string
+};
 export default CarouselItem;
