@@ -1,51 +1,42 @@
-import React, { useState, useEffect } from "react";
+// Components
+import React from "react";
 import Header from "../components/Header";
 import Search from "../components/Search";
 import Categories from "../components/Categories";
 import Carousel from "../components/Carousel";
 import CarouselItem from "../components/CarouselItem";
 import Footer from "../components/Footer";
-
+// Styles
 import "../assets/styles/App.scss";
+// States
+import useInitialState from "../hooks/useInitialState";
+
+// Consts
+const API = "http://localhost:3000/initalState";
 
 const App = () => {
-  const [videos, setVideos] = useState({
-    myList: [],
-    trends: [],
-    originals: []
-  });
+  const initialState = useInitialState(API);
 
-  useEffect(() => {
-    fetch("http://localhost:3000/initialState")
-      .then(response => response.json())
-      .then(data => setVideos(data));
-  }, []);
-
-  return (
+  return initialState.length === 0 ? (
+    <h1> Loading... </h1>
+  ) : (
     <div className="App">
-      <Header></Header>
-      <Search></Search>
-
-      {videos.myList.length > 0 && (
-        <Categories title="Mi Lista">
-          <Carousel>
-            <CarouselItem />
-          </Carousel>
-        </Categories>
-      )}
-
-      <Categories title="Tendencias">
-        <Carousel>
-          <CarouselItem />
-        </Carousel>
-      </Categories>
-
-      <Categories title="Originales de Incari Video">
-        <Carousel>
-          <CarouselItem />
-        </Carousel>
-      </Categories>
-      <Footer></Footer>
+      <Header />
+      <Search />
+      {Object.keys(initialState).map(category => {
+        if (initialState[category].length) {
+          return (
+            <Categories key={category} title={category}>
+              <Carousel>
+                {initialState[category].map(item => (
+                  <CarouselItem key={item.id} {...item} />
+                ))}
+              </Carousel>
+            </Categories>
+          );
+        }
+      })}
+      <Footer />
     </div>
   );
 };
