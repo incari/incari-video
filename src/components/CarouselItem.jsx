@@ -55,13 +55,13 @@ const CarouselItem = props => {
   );
 };
 
-CarouselItem.propTypes = {
-  cover: PropTypes.string,
-  title: PropTypes.string,
-  year: PropTypes.number,
-  contentRating: PropTypes.string,
-  duration: PropTypes.string
-};
+// CarouselItem.propTypes = {
+//   cover: PropTypes.string,
+//   title: PropTypes.string,
+//   year: PropTypes.number,
+//   contentRating: PropTypes.string,
+//   duration: PropTypes.string
+// };
 const mapDispatchToProps = {
   setFavorite,
   deleteFavorite

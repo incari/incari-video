@@ -11,7 +11,7 @@ import "../assets/styles/App.scss";
 const Home = ({ myList, trends, originals }) => {
   return (
     <>
-      <Search />
+      <Search isHome />
 
       {/* 
       {Object.keys(initialState).map(category => {
